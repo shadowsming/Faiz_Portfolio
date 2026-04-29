@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faiz Ahmed Khan — AEC Technology Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Mono:wght@300;400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #f7f4ef;
+    --dark: #1a1814;
+    --accent: #c8521a;
+    --accent2: #2d6a4f;
+    --mid: #6b6560;
+    --light-border: #e2ddd8;
+    --card-bg: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    overflow-x: hidden;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    background: var(--dark);
+    padding: 60px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .hero-left::after {
+    content: '';
+    position: absolute;
+    top: 0; right: -1px;
+    width: 2px; height: 100%;
+    background: var(--accent);
+  }
+
+  .hero-right {
+    background: var(--cream);
+    padding: 60px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .logo-mark {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards 0.2s;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 300;
+    color: #ffffff;
+    line-height: 1.0;
+    letter-spacing: -1px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.4s;
+  }
+
+  .hero-name span {
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .hero-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: #a09a94;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 24px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.6s;
+  }
+
+  .hero-bottom {
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.8s;
+  }
+
+  .contact-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #a09a94;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-item:hover { color: var(--accent); }
+
+  .contact-dot {
+    width: 4px; height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* Right side hero content */
+  .hero-intro-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--mid);
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.5s;
+  }
+
+  .hero-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 300;
+    line-height: 1.4;
+    color: var(--dark);
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.7s;
+  }
+
+  .hero-intro strong {
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 0.9s;
+  }
+
+  .stat {
+    border-left: 2px solid var(--accent);
+    padding-left: 16px;
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--dark);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--mid);
+    margin-top: 4px;
+    letter-spacing: 0.5px;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--dark);
+    color: #fff;
+    padding: 14px 28px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    transition: background 0.3s, transform 0.2s;
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards 1.1s;
+  }
+
+  .hero-cta:hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 56px;
+    mix-blend-mode: normal;
+    pointer-events: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    pointer-events: all;
+  }
+
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #a09a94;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── SECTIONS ── */
+  section {
+    padding: 100px 56px;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 64px;
+  }
+
+  .section-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 2px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 300;
+    color: var(--dark);
+    line-height: 1;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--light-border);
+    margin-left: 20px;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    gap: 2px;
+  }
+
+  .project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--light-border);
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: start;
+    padding: 40px;
+    gap: 40px;
+    transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform 0.4s ease;
+  }
+
+  .project-card:hover::before { transform: scaleY(1); }
+
+  .project-card:hover {
+    box-shadow: 8px 8px 0px var(--light-border);
+    transform: translate(-2px, -2px);
+    border-color: var(--accent);
+  }
+
+  .project-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    font-weight: 300;
+    color: var(--light-border);
+    line-height: 1;
+    transition: color 0.3s;
+  }
+
+  .project-card:hover .project-num { color: var(--accent); opacity: 0.3; }
+
+  .project-content {}
+
+  .project-tag {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent2);
+    background: #edf7f2;
+    padding: 4px 10px;
+    margin-bottom: 12px;
+  }
+
+  .project-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .project-desc {
+    font-size: 14px;
+    color: var(--mid);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    max-width: 600px;
+  }
+
+  .project-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .feature-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--mid);
+    background: var(--cream);
+    padding: 4px 12px;
+    border: 1px solid var(--light-border);
+    letter-spacing: 0.5px;
+  }
+
+  .project-tools {
+    text-align: right;
+    min-width: 120px;
+  }
+
+  .tool-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--mid);
+    margin-bottom: 8px;
+  }
+
+  .tool-badge {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--dark);
+    padding: 4px 0;
+    border-bottom: 1px solid var(--light-border);
+    margin-bottom: 4px;
+  }
+
+  /* ── SKILLS ── */
+  .skills-section {
+    background: var(--dark);
+    padding: 100px 56px;
+  }
+
+  .skills-section .section-title { color: #fff; }
+  .skills-section .section-num { color: var(--accent); }
+  .skills-section .section-line { background: #333; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: #333;
+    border: 1px solid #333;
+  }
+
+  .skill-group {
+    background: var(--dark);
+    padding: 40px;
+  }
+
+  .skill-group-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #333;
+  }
+
+  .skill-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .skill-dot {
+    width: 6px; height: 6px;
+    background: var(--accent2);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .skill-name {
+    font-size: 14px;
+    color: #d4cfc9;
+    font-weight: 400;
+  }
+
+  .skill-bar-wrap {
+    flex: 1;
+    height: 2px;
+    background: #333;
+    margin-left: auto;
+    width: 60px;
+  }
+
+  .skill-bar {
+    height: 100%;
+    background: var(--accent);
+  }
+
+  /* ── EXPERIENCE ── */
+  .exp-grid {
+    display: grid;
+    gap: 1px;
+  }
+
+  .exp-card {
+    background: var(--card-bg);
+    border: 1px solid var(--light-border);
+    padding: 36px 40px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    transition: border-color 0.3s;
+  }
+
+  .exp-card:hover { border-color: var(--accent); }
+
+  .exp-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--mid);
+    letter-spacing: 1px;
+  }
+
+  .exp-company {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--dark);
+    margin-bottom: 4px;
+  }
+
+  .exp-role {
+    font-size: 12px;
+    color: var(--accent);
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+
+  .exp-points {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .exp-points li {
+    font-size: 13px;
+    color: var(--mid);
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .exp-points li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 11px;
+  }
+
+  /* ── CERTS ── */
+  .certs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .cert-card {
+    border: 1px solid var(--light-border);
+    padding: 24px;
+    background: var(--card-bg);
+    transition: border-color 0.3s, transform 0.2s;
+  }
+
+  .cert-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-3px);
+  }
+
+  .cert-org {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  .cert-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--dark);
+    line-height: 1.4;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    padding: 60px 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    color: #fff;
+  }
+
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: right;
+  }
+
+  .footer-contact a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: #a09a94;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+  }
+
+  .footer-contact a:hover { color: var(--accent); }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: #555;
+    margin-top: 40px;
+    text-align: center;
+    padding-bottom: 24px;
+    background: var(--dark);
+    letter-spacing: 2px;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: var(--light-border);
+    margin: 0 56px;
+    width: calc(100% - 112px);
+  }
+
+  /* ── ABOUT STRIP ── */
+  .about-strip {
+    background: var(--accent);
+    padding: 40px 56px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    overflow: hidden;
+  }
+
+  .about-strip-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(20px, 2.5vw, 28px);
+    font-weight: 300;
+    color: #fff;
+    line-height: 1.5;
+    max-width: 900px;
+  }
+
+  .about-strip-text strong { font-weight: 700; }
+
+  /* Scrolling ticker */
+  .ticker-wrap {
+    background: var(--dark);
+    padding: 16px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .ticker {
+    display: inline-block;
+    animation: ticker 20s linear infinite;
+  }
+
+  .ticker span {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #555;
+    padding: 0 32px;
+  }
+
+  .ticker span.accent { color: var(--accent); }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 40px 24px; min-height: 50vh; }
+    .hero-right { padding: 40px 24px; }
+    nav { padding: 16px 24px; }
+    section { padding: 60px 24px; }
+    .project-card { grid-template-columns: 1fr; }
+    .project-tools { text-align: left; }
+    .exp-card { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 24px; text-align: center; }
+    .footer-contact { text-align: center; }
+    .skills-section { padding: 60px 24px; }
+    .about-strip { padding: 32px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#certifications">Certs</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="logo-mark">AEC Technology Portfolio</div>
+    <div>
+      <div class="hero-name">Faiz<br><span>Ahmed</span><br>Khan</div>
+      <div class="hero-title">Computational Designer &amp; BIM Technologist</div>
+    </div>
+    <div class="hero-bottom">
+      <div class="contact-row">
+        <a href="mailto:khanfaiz0119@gmail.com" class="contact-item">
+          <span class="contact-dot"></span>
+          khanfaiz0119@gmail.com
+        </a>
+        <a href="https://linkedin.com/in/faiz-khan-40553026b" target="_blank" class="contact-item">
+          <span class="contact-dot"></span>
+          linkedin.com/in/faiz-khan-40553026b
+        </a>
+        <a href="https://github.com/shadowsming" target="_blank" class="contact-item">
+          <span class="contact-dot"></span>
+          github.com/shadowsming
+        </a>
+        <div class="contact-item">
+          <span class="contact-dot"></span>
+          Mumbai, India
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-intro-label">About</div>
+    <div class="hero-intro">
+      A <strong>Computer Science graduate</strong> bridging the gap between software engineering and the built environment — using computational tools to make architecture smarter, faster, and more precise.
+    </div>
+    <div class="stats-row">
+      <div class="stat">
+        <div class="stat-num">4</div>
+        <div class="stat-label">AEC Projects Built</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3+</div>
+        <div class="stat-label">Years CS Training</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">7</div>
+        <div class="stat-label">Certifications</div>
+      </div>
+    </div>
+    <a href="#projects" class="hero-cta">View Projects →</a>
+  </div>
+</div>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="accent">Grasshopper</span><span>·</span>
+    <span>Rhinoceros 3D</span><span>·</span>
+    <span class="accent">Parametric Design</span><span>·</span>
+    <span>AutoCAD</span><span>·</span>
+    <span class="accent">Revit</span><span>·</span>
+    <span>BIM Technology</span><span>·</span>
+    <span class="accent">Computational Design</span><span>·</span>
+    <span>Python</span><span>·</span>
+    <span class="accent">AEC Technology</span><span>·</span>
+    <span>Navisworks</span><span>·</span>
+    <span class="accent">Grasshopper</span><span>·</span>
+    <span>Rhinoceros 3D</span><span>·</span>
+    <span class="accent">Parametric Design</span><span>·</span>
+    <span>AutoCAD</span><span>·</span>
+    <span class="accent">Revit</span><span>·</span>
+    <span>BIM Technology</span><span>·</span>
+    <span class="accent">Computational Design</span><span>·</span>
+    <span>Python</span><span>·</span>
+    <span class="accent">AEC Technology</span><span>·</span>
+    <span>Navisworks</span><span>·</span>
+  </div>
+</div>
+
+<!-- ABOUT STRIP -->
+<div class="about-strip">
+  <div class="about-strip-text">
+    I combine a <strong>CS degree with hands-on BIM tools</strong> — AutoCAD, Revit, Rhinoceros, and Grasshopper — to automate repetitive design tasks, generate parametric geometry, and solve real problems that architecture and construction firms face every day.
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects" style="max-width:100%; padding: 100px 56px;">
+  <div class="section-header reveal">
+    <span class="section-num">01</span>
+    <h2 class="section-title">AEC Projects</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="projects-grid">
+
+    <div class="project-card reveal">
+      <div class="project-num">01</div>
+      <div class="project-content">
+        <span class="project-tag">Parametric Design</span>
+        <div class="project-name">Smart Room Area Calculator</div>
+        <div class="project-desc">
+          A live parametric tool where architects input room dimensions via sliders and area calculates instantly — zero manual computation. Demonstrates real-time data flow from geometric input to numeric output, replacing spreadsheet-based workflows.
+        </div>
+        <div class="project-features">
+          <span class="feature-tag">Live area calculation</span>
+          <span class="feature-tag">Parametric sliders</span>
+          <span class="feature-tag">Real-time Rhino preview</span>
+          <span class="feature-tag">Scalable geometry</span>
+        </div>
+      </div>
+      <div class="project-tools">
+        <div class="tool-label">Built with</div>
+        <span class="tool-badge">Grasshopper</span>
+        <span class="tool-badge">Rhinoceros 3D</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">02</div>
+      <div class="project-content">
+        <span class="project-tag">3D Parametric Facade</span>
+        <div class="project-name">Parametric Building Facade Generator</div>
+        <div class="project-desc">
+          A dynamic building facade system where panel count, depth, size, and grid layout update automatically via sliders. Architects can explore hundreds of facade variations in seconds — a process that traditionally takes days of manual modelling.
+        </div>
+        <div class="project-features">
+          <span class="feature-tag">Dynamic panel grid</span>
+          <span class="feature-tag">3D extrusion</span>
+          <span class="feature-tag">Surface subdivision</span>
+          <span class="feature-tag">Custom color preview</span>
+          <span class="feature-tag">Rows & columns control</span>
+        </div>
+      </div>
+      <div class="project-tools">
+        <div class="tool-label">Built with</div>
+        <span class="tool-badge">Grasshopper</span>
+        <span class="tool-badge">Rhinoceros 3D</span>
+        <span class="tool-badge">SFrames</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">03</div>
+      <div class="project-content">
+        <span class="project-tag">Floor Plan Automation</span>
+        <div class="project-name">Multi-Room Floor Plan Generator</div>
+        <div class="project-desc">
+          An automated apartment floor plan generator — input number of rooms, dimensions, and wall thickness, and the entire layout arranges itself. Each room is color-coded and labeled with its area. Eliminates manual room placement for early-stage design.
+        </div>
+        <div class="project-features">
+          <span class="feature-tag">Auto room arrangement</span>
+          <span class="feature-tag">Area labeling</span>
+          <span class="feature-tag">Color-coded rooms</span>
+          <span class="feature-tag">Wall offset</span>
+          <span class="feature-tag">Scalable room count</span>
+        </div>
+      </div>
+      <div class="project-tools">
+        <div class="tool-label">Built with</div>
+        <span class="tool-badge">Grasshopper</span>
+        <span class="tool-badge">Rhinoceros 3D</span>
+        <span class="tool-badge">Series Logic</span>
+      </div>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-num">04</div>
+      <div class="project-content">
+        <span class="project-tag">Cost Automation</span>
+        <div class="project-name">Automatic Construction Cost Estimator</div>
+        <div class="project-desc">
+          A practical cost estimation tool that calculates floor, wall, and ceiling costs in real time as architects adjust room dimensions. Outputs a detailed cost breakdown and exports directly to Excel — turning a manual 2-hour task into a 10-second automated report.
+        </div>
+        <div class="project-features">
+          <span class="feature-tag">Real-time cost calculation</span>
+          <span class="feature-tag">Floor / wall / ceiling costs</span>
+          <span class="feature-tag">Excel export</span>
+          <span class="feature-tag">Professional report output</span>
+        </div>
+      </div>
+      <div class="project-tools">
+        <div class="tool-label">Built with</div>
+        <span class="tool-badge">Grasshopper</span>
+        <span class="tool-badge">Rhinoceros 3D</span>
+        <span class="tool-badge">Python</span>
+        <span class="tool-badge">Excel</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<div class="skills-section" id="skills">
+  <div style="max-width:1400px; margin:0 auto;">
+    <div class="section-header reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Skills</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-grid">
+
+      <div class="skill-group reveal">
+        <div class="skill-group-title">AEC & BIM Tools</div>
+        <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Grasshopper</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+        <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Rhinoceros 3D</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:82%"></div></div></div>
+        <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">AutoCAD</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
+        <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Revit</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div></div>
+        <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Navisworks</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:60%"></div></div></div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Programming</div>
+        <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Python</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:88%"></div></div></div>
+        <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Java</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:75%"></div></div></div>
+        <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">HTML / CSS / JS</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:78%"></div></div></div>
+        <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">SQL</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:70%"></div></div></div>
+        <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">PHP</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:60%"></div></div></div>
+      </div>
+
+      <div class="skill-group reveal">
+        <div class="skill-group-title">Data & Analytics</div>
+        <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Power BI</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:80%"></div></div></div>
+        <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Pandas / NumPy</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:82%"></div></div></div>
+        <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Matplotlib</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:78%"></div></div></div>
+        <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Excel</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:85%"></div></div></div>
+        <div class="skill-item"><span class="skill-dot"></span><span class="skill-name">Scikit-learn</span><div class="skill-bar-wrap"><div class="skill-bar" style="width:65%"></div></div></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header reveal">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Experience</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="exp-grid">
+
+    <div class="exp-card reveal">
+      <div>
+        <div class="exp-date">Sep 2025 – Nov 2025</div>
+      </div>
+      <div>
+        <div class="exp-company">Executive Shiksha & Cygnus Technology</div>
+        <div class="exp-role">Advanced Python, DSA & Android App Development Intern</div>
+        <ul class="exp-points">
+          <li>Worked on data structure and algorithm optimization in Python</li>
+          <li>Developed Android applications integrating APIs and database connectivity</li>
+          <li>Assisted in preparing OJT report for Cygnus Technology Pvt. Ltd.</li>
+          <li>Gained experience in teamwork, debugging, and software testing</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-card reveal">
+      <div>
+        <div class="exp-date">Apr 2025 – Jun 2025</div>
+      </div>
+      <div>
+        <div class="exp-company">Internshala</div>
+        <div class="exp-role">Data Science Intern</div>
+        <ul class="exp-points">
+          <li>Analyzed datasets using Python — NumPy, Pandas, Matplotlib</li>
+          <li>Worked on data visualization projects and real-world data preprocessing</li>
+          <li>Improved understanding of exploratory data analysis and analytics pipelines</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-card reveal">
+      <div>
+        <div class="exp-date">Apr 2025</div>
+      </div>
+      <div>
+        <div class="exp-company">Tarang Group NGO</div>
+        <div class="exp-role">Web Development Intern</div>
+        <ul class="exp-points">
+          <li>Developed a fully functional NGO donation website using HTML, CSS, JavaScript</li>
+          <li>Collaborated with team to design UI and manage online donation flow</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-card reveal">
+      <div>
+        <div class="exp-date">Nov 2024 – Feb 2025</div>
+      </div>
+      <div>
+        <div class="exp-company">Executive Shiksha</div>
+        <div class="exp-role">AI & Personal Branding Intern</div>
+        <ul class="exp-points">
+          <li>Learned use of AI tools for image, video, and voice generation</li>
+          <li>Worked on enhancing personal branding through AI-driven content creation</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" style="background: var(--cream); padding-top: 0;">
+  <div class="section-header reveal">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Certifications</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="certs-grid">
+    <div class="cert-card reveal">
+      <div class="cert-org">Internshala</div>
+      <div class="cert-name">Data Science Certification</div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-org">Deloitte · Forage</div>
+      <div class="cert-name">Data Analytics Virtual Experience</div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-org">Tata Group · Forage</div>
+      <div class="cert-name">Data Visualisation Virtual Experience</div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-org">JPMorgan Chase · Forage</div>
+      <div class="cert-name">Quantitative Research Virtual Experience</div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-org">Executive Shiksha</div>
+      <div class="cert-name">AI & Personal Branding Internship Certificate</div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-org">Cygnus Technology · Executive Shiksha</div>
+      <div class="cert-name">Advanced Python, DSA & Android Development</div>
+    </div>
+    <div class="cert-card reveal">
+      <div class="cert-org">Tarang Group NGO</div>
+      <div class="cert-name">Web Development Internship Certificate</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Faiz Ahmed Khan</div>
+  <div class="footer-contact">
+    <a href="mailto:khanfaiz0119@gmail.com">khanfaiz0119@gmail.com</a>
+    <a href="tel:+917977594645">+91 7977594645</a>
+    <a href="https://linkedin.com/in/faiz-khan-40553026b" target="_blank">LinkedIn</a>
+    <a href="https://github.com/shadowsming" target="_blank">GitHub</a>
+  </div>
+</footer>
+<div class="footer-copy">© 2026 Faiz Ahmed Khan · AEC Technology Portfolio</div>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, 100);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
